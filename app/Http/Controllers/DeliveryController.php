@@ -6,6 +6,7 @@ use App\Models\Email;
 use App\Models\Collection;
 use App\Mail\EmailTemplate;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 
 class DeliveryController extends Controller
 {
@@ -16,10 +17,11 @@ class DeliveryController extends Controller
         return view('email', compact('collections', 'email'));
     }
 
-    public function send($eid, $cid)
+    public function send(Request $request)
     {
-        $email_address = Collection::find($cid);
-        $email = Email::find($eid);
+        $email = Email::find($request->eid);
+        foreach($request->checkbox as $key=>$value){
+        $email_address = Collection::find($value);
         $data = [
             'fname' => $email_address->first_name,
             'lname' => $email_address->last_name,
@@ -28,7 +30,7 @@ class DeliveryController extends Controller
         ];
 
         Mail::to($email_address->email)->send(new EmailTemplate($data));
-
+    }
         $collections = Collection::where('user_id', \auth()->user()->id)->paginate(5);
         return view('email', compact('collections', 'email'));
     }

@@ -32,9 +32,13 @@ Route::get('/edit-email/{id}', [EmailController::class, 'edit'])->name('edit-ema
 
 Route::post('/update-email/{id}', [EmailController::class, 'update'])->name('update-email');
 
-Route::get('/send/{eid}/{cid}', [DeliveryController::class, 'send'])->name('send');
+Route::get('/delete-email/{id}', [EmailController::class, 'delete'])->name('delete-email');
+
+Route::post('/send', [DeliveryController::class, 'send'])->name('send');
 
 Route::post('/add-email', [CollectionController::class, 'store'])->name('add-email');
+
+Route::get('/delete-address/{id}', [CollectionController::class, 'delete'])->name('delete-address');
 
 Route::get('/edit-address/{id}', [CollectionController::class, 'edit'])->name('edit-address');
 

@@ -58,11 +58,12 @@
                             <tr>
                                 <td>{{ $index + $emails->firstItem() }} </td>
                                 <td>{{ $email->title }}</td>
-                                <td><a href="{{route('show-email', $email->id)}}">{!! Str::limit($email->body, 30, $end = '...') !!}</a></td>
+                                <td><a href="{{ route('show-email', $email->id) }}">{!! Str::limit($email->body, 30, $end = '...') !!}</a></td>
                                 <td>
                                     <a href="{{ route('edit-email', $email->id) }}"
                                         class="btn btn-sm btn-warning">Update</a>
-                                    <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ route('delete-email', $email->id) }}"
+                                        class="btn btn-sm btn-danger">Delete</a>
                                     <a href="{{ route('send-email', $email->id) }}" class="btn btn-sm btn-info">Send
                                         Mail</a>
                                 </td>

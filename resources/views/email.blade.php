@@ -19,8 +19,8 @@
                     </div>
 
                     <div class="card-body">
-                        <h4>{!!$email->title!!}</h4>
-                        <p>{!!$email->body!!}</p>
+                        <h4>{!! $email->title !!}</h4>
+                        <p>{!! $email->body !!}</p>
                     </div>
                 </div>
             </div>
@@ -29,32 +29,44 @@
                     <div class="card-header">
                         Email Address List
                     </div>
-
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Sl no</th>
-                                    <th>Email Address</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($collections as $index => $collection)
+                    <form action="{{ route('send') }}" method="post">
+                        @csrf
+                        <input name="eid" type="hidden" value="{{$email->id}}">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>{{ $index + $collections->firstItem() }} </td>
-                                        <td>{{ $collection->email }}</td>
-                                        <td>
-                                            <a href="{{route('send', [$email->id, $collection->id])}}" class="btn btn-sm btn-warning">Send Mail</a>
-                                        </td>
+                                        <th>Sl no</th>
+                                        <th>Email Address</th>
+                                        <th>Select</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        {{ $collections->links() }}
-                    </div>
+                                </thead>
+                                <tbody>
+                                    @foreach ($collections as $index => $collection)
+                                        <tr>
+                                            <td>{{ $index + $collections->firstItem() }} </td>
+                                            <td>{{ $collection->email }}</td>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="checkbox[]"
+                                                        value="{{ $collection->id }}" id="flexCheckDefault">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </select>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                {{ $collections->links() }}
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-sm btn-warning">Send Mail</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -18,21 +18,20 @@
                     <div class="card-header">
                         Add New Email Address
                     </div>
-
                     <div class="card-body">
                         <form
-                            action="{{ Request::is('edit-address/*') ? route('update-address', $email->id) : route('add-email') }}"
+                            action="{{ Request::is('edit-address/*') ? route('update-address', $email_address->id) : route('add-email') }}"
                             method="POST">
                             @csrf
                             <label for="fname">First Name</label>
                             <input type="text" name="first_name" id="fname" class="form-control mb-2"
-                                placeholder="Enter First Name" value={{ $address->first_name ?? '' }}>
+                                placeholder="Enter First Name" value={{ $email_address->first_name ?? '' }}>
                             <label for="lname">Last Name</label>
                             <input type="text" name="last_name" id="lname" class="form-control mb-2"
-                                placeholder="Enter Last Name" value={{ $address->last_name ?? '' }}>
+                                placeholder="Enter Last Name" value={{ $email_address->last_name ?? '' }}>
                             <label for="email">Email Address</label>
                             <input type="email" name="email" id="email" class="form-control mb-2"
-                                placeholder="Enter Email Address" value={{ $address->email_address ?? '' }}>
+                                placeholder="Enter Email Address" value={{ $email_address->email ?? '' }}>
                             @if (Request::is('edit-address/*'))
                                 <input type="submit" value="Update Email Address" class="btn btn-primary w-100">
 
@@ -67,8 +66,8 @@
                                         <td>{{$email->first_name}} {{$email->last_name}}</td>
                                         <td>{{ $email->email }}</td>
                                         <td>
-                                            <a href="" class="btn btn-sm btn-warning">Update</a>
-                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                            <a href="{{route('edit-address', $email->id)}}" class="btn btn-sm btn-warning">Update</a>
+                                            <a href="{{route('delete-address', $email->id)}}" class="btn btn-sm btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
