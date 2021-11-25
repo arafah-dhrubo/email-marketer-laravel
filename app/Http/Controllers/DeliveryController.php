@@ -18,14 +18,16 @@ class DeliveryController extends Controller
 
     public function send($eid, $cid)
     {
-        $email_address = Collection::find($cid)->email;
+        $email_address = Collection::find($cid);
         $email = Email::find($eid);
         $data = [
+            'fname' => $email_address->first_name,
+            'lname' => $email_address->last_name,
             'title' => $email->title,
             'body' => $email->body
         ];
 
-        Mail::to($email_address)->send(new EmailTemplate($data));
+        Mail::to($email_address->email)->send(new EmailTemplate($data));
 
         $collections = Collection::where('user_id', \auth()->user()->id)->paginate(5);
         return view('email', compact('collections', 'email'));

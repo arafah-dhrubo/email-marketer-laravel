@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^31.0.0",
         "axios": "^0.21",
         "bootstrap": "^4.6.0",
         "jquery": "^3.6",

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\DeliveryController;
+use App\Models\Collection;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +19,26 @@ use App\Http\Controllers\DeliveryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'addresses'])->name('addresses');
+
+Route::get('/emails',[HomeController::class, 'emails'])->name('emails');
 
 Route::get('/send-email/{id}', [DeliveryController::class, 'index'])->name('send-email');
+
+Route::get('/show-email/{id}', [EmailController::class, 'show'])->name('show-email');
+
+Route::get('/edit-email/{id}', [EmailController::class, 'edit'])->name('edit-email');
+
+Route::post('/update-email/{id}', [EmailController::class, 'update'])->name('update-email');
 
 Route::get('/send/{eid}/{cid}', [DeliveryController::class, 'send'])->name('send');
 
 Route::post('/add-email', [CollectionController::class, 'store'])->name('add-email');
+
+Route::get('/edit-address/{id}', [CollectionController::class, 'edit'])->name('edit-address');
+
+Route::post('/update-address/{id}', [CollectionController::class, 'update'])->name('update-address');
 
 Route::post('/make-email', [EmailController::class, 'store'])->name('make-email');
 

@@ -23,10 +23,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function addresses()
     {
-        $emails = Email::where('user_id', auth()->user()->id)->paginate(5);
         $collections = Collection::where('user_id', auth()->user()->id)->paginate(5);
-        return view('home', compact('emails', 'collections'));
+        return view('home', compact('collections'));
+    }
+
+    public function emails(){
+        $emails = Email::where('user_id', auth()->user()->id)->paginate(5);
+        return view('templates', compact('emails'));
     }
 }

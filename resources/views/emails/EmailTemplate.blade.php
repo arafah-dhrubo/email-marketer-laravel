@@ -1,2 +1,3 @@
-<h4>{{$data['title']}}</h4>
-<p>{{$data['body']}}</p>
+<p>Dear {{$data['fname']}} {{$data['lname']}}</p>
+
+<p>{!!$data['body']!!}</p>

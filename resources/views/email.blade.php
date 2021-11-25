@@ -19,8 +19,8 @@
                     </div>
 
                     <div class="card-body">
-                        <h4>{{$email->title}}</h4>
-                        <p>{{$email->body}}</p>
+                        <h4>{!!$email->title!!}</h4>
+                        <p>{!!$email->body!!}</p>
                     </div>
                 </div>
             </div>

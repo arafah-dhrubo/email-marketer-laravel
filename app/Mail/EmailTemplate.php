@@ -29,6 +29,6 @@ class EmailTemplate extends Mailable
      */
     public function build()
     {
-        return $this->from(Auth::user()->email)->subject("test")->view('emails.EmailTemplate')->with('data', $this->data);
+        return $this->from(Auth::user()->email)->subject($this->data['title'])->view('emails.EmailTemplate')->with('data', $this->data);
     }
 }
