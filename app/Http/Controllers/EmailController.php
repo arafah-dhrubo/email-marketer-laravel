@@ -39,11 +39,11 @@ class EmailController extends Controller
         return view('show-email', compact('email'));
     }
 
-    public function delete(Request $id)
+    public function delete($id)
     {
         $email = Email::find($id);
         $email->delete();
-        return redirect('/');
+        return redirect('/emails');
     }
 }
 

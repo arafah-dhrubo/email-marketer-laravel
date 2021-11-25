@@ -63,8 +63,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -86,11 +87,11 @@
                     <div class="bg-white pt-3 position-fixed">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('addresses') }}">All
-                                    Addresses</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('addresses') }}">Email
+                                    List</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('emails') }}">All Emails</a>
+                                <a class="nav-link" href="{{ route('emails') }}">Templates</a>
                             </li>
                         </ul>
                     </div>
@@ -104,11 +105,12 @@
         </main>
     </div>
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.ckeditor').ckeditor();
-    });
-</script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.ckeditor').ckeditor();
+        });
+        
+    </script>
 </body>
 
 </html>

@@ -31,7 +31,6 @@ class DeliveryController extends Controller
 
         Mail::to($email_address->email)->send(new EmailTemplate($data));
     }
-        $collections = Collection::where('user_id', \auth()->user()->id)->paginate(5);
-        return view('email', compact('collections', 'email'));
+       return redirect('/emails');
     }
 }

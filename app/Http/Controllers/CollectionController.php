@@ -38,7 +38,7 @@ class CollectionController extends Controller
         return Redirect('/')->with('success', 'New email address added successfully');
     }
 
-    public function delete(Request $id){
+    public function delete($id){
         $email_address = Collection::find($id);
         $email_address->delete();
         return redirect('/');
