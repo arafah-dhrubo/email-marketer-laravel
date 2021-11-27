@@ -48,3 +48,4 @@ Route::post('/make-email', [EmailController::class, 'store'])->name('make-email'
 
 Auth::routes();
 
+?>
