@@ -33,4 +33,8 @@ class HomeController extends Controller
         $emails = Email::where('user_id', auth()->user()->id)->paginate(5);
         return view('templates', compact('emails'));
     }
+
+    public function membership(){
+        return view('membership');
+    }
 }

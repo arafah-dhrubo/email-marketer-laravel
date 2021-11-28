@@ -21,17 +21,17 @@
                     method="POST" enctype="multipart/form-data">
                     @csrf
                     <label for="title">Email Title</label>
-                    <input type="text" value="{{ $email->title ?? '' }}" name="title" id="title" class="form-control mb-2"
+                    <input required type="text" value="{{ $email->title ?? '' }}" name="title" id="title" class="form-control mb-2"
                         placeholder="Enter Email Title">
                     <label for="body">Email Body</label>
                     <textarea type="text" name="body" id="body" class="form-control mb-2 ckeditor"
-                        placeholder="Enter Email Title" cols="30" rows="10">{{ $email->body ?? '' }}</textarea>
+                        placeholder="Enter Email Title" cols="30" rows="10" required>{{ $email->body ?? '' }}</textarea>
                     <br>
                     @if (Request::is('edit-email/*'))
-                        <input type="submit" value="Update Email" class="btn btn-primary w-100">
+                        <input required type="submit" value="Update Email" class="btn btn-primary w-100">
 
                     @else
-                        <input type="submit" value="Compose Email" class="btn btn-primary w-100">
+                        <input required type="submit" value="Compose Email" class="btn btn-primary w-100">
 
                     @endif
 

@@ -24,6 +24,8 @@ Route::get('/', [HomeController::class, 'addresses'])->name('addresses');
 
 Route::get('/emails',[HomeController::class, 'emails'])->name('emails');
 
+Route::get('/membership', [HomeController::class, 'membership'])->name('membership');
+
 Route::get('/send-email/{id}', [DeliveryController::class, 'index'])->name('send-email');
 
 Route::get('/show-email/{id}', [EmailController::class, 'show'])->name('show-email');
@@ -45,6 +47,8 @@ Route::get('/edit-address/{id}', [CollectionController::class, 'edit'])->name('e
 Route::post('/update-address/{id}', [CollectionController::class, 'update'])->name('update-address');
 
 Route::post('/make-email', [EmailController::class, 'store'])->name('make-email');
+
+
 
 Auth::routes();
 

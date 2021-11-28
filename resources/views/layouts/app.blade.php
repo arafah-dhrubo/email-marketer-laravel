@@ -93,6 +93,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('emails') }}">Templates</a>
                             </li>
+                            {{-- <li class="nav-item">
+                                <a class="nav-link" href="{{ route('membership') }}">Membership</a>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -109,7 +112,7 @@
         $(document).ready(function() {
             $('.ckeditor').ckeditor();
         });
-        
+
     </script>
 </body>
 

@@ -24,19 +24,19 @@
                             method="POST">
                             @csrf
                             <label for="fname">First Name</label>
-                            <input type="text" name="first_name" id="fname" class="form-control mb-2"
+                            <input required type="text" name="first_name" id="fname" class="form-control mb-2"
                                 placeholder="Enter First Name" value={{ $email_address->first_name ?? '' }}>
                             <label for="lname">Last Name</label>
-                            <input type="text" name="last_name" id="lname" class="form-control mb-2"
+                            <input required type="text" name="last_name" id="lname" class="form-control mb-2"
                                 placeholder="Enter Last Name" value={{ $email_address->last_name ?? '' }}>
                             <label for="email">Email Address</label>
-                            <input type="email" name="email" id="email" class="form-control mb-2"
+                            <input required type="email" name="email" id="email" class="form-control mb-2"
                                 placeholder="Enter Email Address" value={{ $email_address->email ?? '' }}>
                             @if (Request::is('edit-address/*'))
-                                <input type="submit" value="Update Email Address" class="btn btn-primary w-100">
+                                <input required type="submit" value="Update Email Address" class="btn btn-primary w-100">
 
                             @else
-                                <input type="submit" value="Add Email Address" class="btn btn-primary w-100">
+                                <input required type="submit" value="Add Email Address" class="btn btn-primary w-100">
 
                             @endif
                         </form>
