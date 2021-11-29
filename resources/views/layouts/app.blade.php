@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!--Favicon-->
+    <link rel="shortcut icon" href="https://www.freepnglogos.com/uploads/email-png/blue-email-box-circle-png-transparent-icon-2.png" type="image/x-icon">
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
