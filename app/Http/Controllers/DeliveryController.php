@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailQueue;
 use App\Models\Email;
 use App\Models\Collection;
 use App\Mail\EmailTemplate;
@@ -20,17 +21,18 @@ class DeliveryController extends Controller
     public function send(Request $request)
     {
         $email = Email::find($request->eid);
-        foreach($request->checkbox as $key=>$value){
-        $email_address = Collection::find($value);
-        $data = [
-            'fname' => $email_address->first_name,
-            'lname' => $email_address->last_name,
-            'title' => $email->title,
-            'body' => $email->body
-        ];
+        foreach ($request->checkbox as $key => $value) {
+            $email_address = Collection::find($value);
+            $data = [
+                'fname' => $email_address->first_name,
+                'lname' => $email_address->last_name,
+                'title' => $email->title,
+                'body' => $email->body
+            ];
+            $emailJob = new SendEmailQueue($email_address, $data);
 
-        Mail::to($email_address->email)->send(new EmailTemplate($data));
-    }
-       return redirect('/emails');
+            dispatch($emailJob);
+        }
+        return redirect('/emails');
     }
 }
