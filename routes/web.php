@@ -6,7 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\MembershipController;
 use App\Models\Collection;
+use App\Models\Membership;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +50,7 @@ Route::post('/update-address/{id}', [CollectionController::class, 'update'])->na
 
 Route::post('/make-email', [EmailController::class, 'store'])->name('make-email');
 
-
+Route::post('/select-package/{id}', [MembershipController::class, 'store'])->name('select-package');
 
 Auth::routes();
 
