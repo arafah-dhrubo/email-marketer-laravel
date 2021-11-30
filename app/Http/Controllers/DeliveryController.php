@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SendEmailQueue;
 use App\Models\Email;
 use App\Models\Collection;
 use App\Mail\EmailTemplate;
-use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendEmailQueue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class DeliveryController extends Controller
 {

@@ -17,9 +17,11 @@ class EmailTemplate extends Mailable
      *
      * @return void
      */
-    public function __construct($data)
+    protected $from_email;
+    public function __construct($data, $from_email)
     {
         $this->data=$data;
+        $this->from_email=$from_email;
     }
 
     /**
@@ -29,6 +31,6 @@ class EmailTemplate extends Mailable
      */
     public function build()
     {
-        return $this->from('hello@gmail.com')->subject($this->data['title'])->view('emails.EmailTemplate')->with('data', $this->data);
+        return $this->from($this->from_email)->subject($this->data['title'])->view('emails.EmailTemplate')->with('data', $this->data);
     }
 }

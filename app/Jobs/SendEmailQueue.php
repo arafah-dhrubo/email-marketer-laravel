@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Support\Facades\Auth;
 
 class SendEmailQueue implements ShouldQueue
 {
@@ -22,8 +23,10 @@ class SendEmailQueue implements ShouldQueue
      */
     protected $email_address;
     protected $data;
+    protected $from_email;
     public function __construct($email_address, $data)
     {
+        $this->from_email=Auth::user()->email;
         $this->email_address = $email_address['email'];
         $this->data = $data;
     }
@@ -36,6 +39,6 @@ class SendEmailQueue implements ShouldQueue
     public function handle()
     {
 
-        Mail::to($this->email_address)->send(new EmailTemplate($this->data));
+        Mail::to($this->email_address)->send(new EmailTemplate($this->data, $this->from_email));
     }
 }
